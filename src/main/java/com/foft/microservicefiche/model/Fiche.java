@@ -19,6 +19,7 @@ public class Fiche {
     private String motif;
     private String signatureDelegue;
     private String signatureEnseignant;
+    private Integer idProgramme;
 
     private int state; // -1 => initiés 0 => en cours de validation; 1 =>  rejetés; 2 => validés;  3 => Rattrapage
 
