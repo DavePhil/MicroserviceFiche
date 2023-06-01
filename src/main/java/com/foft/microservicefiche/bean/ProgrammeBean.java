@@ -3,6 +3,8 @@ package com.foft.microservicefiche.bean;
 
 
 import com.foft.microserviceprogramme.modele.Jour;
+import com.foft.microserviceprogramme.modele.Seance;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 import java.time.LocalTime;
@@ -17,5 +19,8 @@ public class ProgrammeBean {
     private Integer idUe;
     private Integer idSalle;
     private Integer idEnseignant;
+    private Integer idSemestre;
+    private Integer idClasse;
     private Jour jour;
+    private Seance Seance;
 }

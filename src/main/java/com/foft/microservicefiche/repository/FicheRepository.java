@@ -34,19 +34,19 @@ public interface FicheRepository extends JpaRepository<Fiche, Integer> {
 
     void deleteByIdAndState(int id, int state);
 
-//    @Query("select fiche from Fiche fiche inner join Enseignant e on e.id= fiche.programme.enseignant.id where e.id=:enseignant_id")
-//    List<Fiche> findByEnseignant(@Param("enseignant_id") Integer enseignant_id);
-//
-//    @Query("select fiche from Fiche fiche inner join Enseignant e on e.id= fiche.programme.enseignant.id where e.id=:enseignant_id and fiche.state=:state")
-//    List<Fiche> findByEnseignantAndState(@Param("enseignant_id") Integer enseignant_id, @Param("state") Integer state);
-//
-//    @Query("select fiche from Fiche fiche inner join Delegue d where d.niveau.id=:specialite_id and d.specialite.id=:niveau_id and fiche.state=:state")
-//    List<Fiche> findByDelegueAndState ( @Param("niveau_id") Integer niveau_id, @Param("specialite_id")Integer specialite_id, @Param("state") Integer state);
-//
-//    @Query("select fiche from Fiche fiche inner join Delegue d where d.id=:delegue_id")
-//    List<Fiche> findByDelegue(@Param("delegue_id") Integer delegue_id);
-//
-//    List<Fiche> findByState(@Param("state") Integer state);
-//    @Query("select count(fiche) FROM Fiche fiche inner join Enseignant e on e.id= fiche.programme.enseignant.id where e.id=:enseignant_id and fiche.seance.id=:seance")
-//    int countFicheBySignatureEnseignant(@Param("enseignant_id") Integer enseignant_id, @Param("seance") Integer seance);
+    @Query("select fiche from Fiche fiche where fiche.idEnseignant=:enseignant_id")
+    List<Fiche> findByEnseignant(@Param("enseignant_id") Integer enseignant_id);
+
+    @Query("select fiche from Fiche fiche  where fiche.idEnseignant=:enseignant_id and fiche.state=:state")
+    List<Fiche> findByEnseignantAndState(@Param("enseignant_id") Integer enseignant_id, @Param("state") Integer state);
+
+    @Query("select fiche from Fiche fiche  where fiche.idClasse=:idClasse and fiche.state=:state")
+    List<Fiche> findByDelegueAndState (@Param("idClasse")Integer idClasse, @Param("state") Integer state);
+
+    @Query("select fiche from Fiche fiche  where fiche.idClasse=:idClasse")
+    List<Fiche> findByDelegue(@Param("idClasse") Integer idClasse);
+
+    List<Fiche> findByState(@Param("state") Integer state);
+    @Query("select count(fiche) FROM Fiche fiche  where fiche.idEnseignant=:enseignant_id and fiche.idSeance=:seance")
+    int countFicheBySignatureEnseignant(@Param("enseignant_id") Integer enseignant_id, @Param("seance") Integer seance);
 }
