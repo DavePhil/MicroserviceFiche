@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:openjdk:17-alpine
 WORKDIR /app
 EXPOSE 9004
 COPY target/microfiche.jar /app
