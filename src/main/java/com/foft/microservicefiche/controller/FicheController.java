@@ -1,6 +1,8 @@
 package com.foft.microservicefiche.controller;
 
+import com.foft.microservicefiche.bean.ProgrammeBean;
 import com.foft.microservicefiche.model.Fiche;
+import com.foft.microservicefiche.proxies.MicroserviceProgrammeProxy;
 import com.foft.microservicefiche.service.FicheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,6 +24,9 @@ public class FicheController {
 
     @Autowired
     private FicheService ficheService;
+
+    @Autowired
+    private MicroserviceProgrammeProxy microserviceProgrammeProxy;
     @GetMapping("/Fiche/{id}")
     public Fiche getFiche(@PathVariable("id") final Integer id ){
         Optional<Fiche> fiche = ficheService.getFiche(id);
@@ -127,6 +133,11 @@ public class FicheController {
     @GetMapping("/fichedelegueandstate/{classe_id}/{state}")
     public Iterable<Fiche> findByIdDelegueAndState(@PathVariable("classe_id") Integer classe_id, @PathVariable("state") Integer state){
         return ficheService.findByDelegueAndState(classe_id,state);
+    }
+
+    @GetMapping("/lol/{id}")
+    public List<ProgrammeBean> all(@PathVariable("id") int id){
+        return microserviceProgrammeProxy.programmes(id);
     }
 
 }

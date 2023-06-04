@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @FeignClient(name ="MicroserviceProgramme")
-@RibbonClient(name = "MicroserviceProgramme")
+@RibbonClient(name = "MicroserviceProgramme", configuration = {})
 public interface MicroserviceProgrammeProxy {
 
     @PostMapping("/MicroProg/programme")
@@ -21,7 +21,7 @@ public interface MicroserviceProgrammeProxy {
     ProgrammeBean updateProgramme(@PathVariable("id") int id, @RequestBody ProgrammeBean programme);
     @DeleteMapping("/MicroProg/deleteprogramme/{id}")
     void deleteProgramme(@PathVariable int id);
-    @GetMapping("/MicroProg/programme/{idjour}")
+    @GetMapping("/MicroProg/programmes/{idjour}")
     List<ProgrammeBean> programmes (@PathVariable("idjour") Integer idjour);
     @GetMapping("/MicroProg/programme/{id}")
     Optional<ProgrammeBean> getProgrammes(@PathVariable int id);
