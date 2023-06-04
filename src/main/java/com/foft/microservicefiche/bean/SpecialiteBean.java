@@ -3,10 +3,7 @@ package com.foft.microservicefiche.bean;
 import lombok.Data;
 
 @Data
-public class ClasseBean {
-
+public class SpecialiteBean {
     private Integer id;
     private String nom;
-    private NiveauBean niveau;
-    private SpecialiteBean specialite;
 }

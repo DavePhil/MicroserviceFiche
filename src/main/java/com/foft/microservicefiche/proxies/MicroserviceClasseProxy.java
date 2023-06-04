@@ -1,6 +1,5 @@
 package com.foft.microservicefiche.proxies;
 
-import com.foft.microserviceclasse.modele.Classe;
 import com.foft.microservicefiche.bean.ClasseBean;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -14,7 +13,7 @@ import java.util.Optional;
 @RibbonClient(name ="MicroserviceClasse")
 public interface MicroserviceClasseProxy {
     @GetMapping("/MicroClasse/classes")
-    Iterable<Classe> getClasses ();
+    Iterable<ClasseBean> getClasses ();
     @GetMapping("/MicroClasse/classe/{id}")
     Optional<ClasseBean> getclasse (@PathVariable("id") final Integer id);
 }
