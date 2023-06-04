@@ -125,6 +125,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>microfiche</finalName>
     </build>
 
 

@@ -16,6 +16,9 @@ public class Fiche {
     private String titre;
     private Date date;
     private String contenu;
+    private String HeureDebut;
+    private String heureFin;
+    private String totalHoraire;
     private String motif;
     private String signatureDelegue;
     private String signatureEnseignant;
